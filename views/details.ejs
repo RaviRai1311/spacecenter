@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            ISS_LOCATION
+        </title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+
+        <style>
+            #map{position: absolute; top: 10%; bottom: 10%; left: 30%; right: 5%;}
+        </style>
+    </head>
+    <body>
+
+		<h1>Details of people who are currently on the International Space Station</h1>
+		<p><h2>Number of people on ISS(at present): <%= pdata["number"] %></h2></p>
+		<% for(var i =0;i<pdata["number"];i++){ %>
+    		<li>CRAFT: <%= pdata["people"][i]["craft"] %></li>
+            <a class="ui image label">
+  <img src="https://cdn0.iconfinder.com/data/icons/avatar-4/512/Astronaut-512.png" height="10" width="10">
+            NAME: <%= pdata["people"][i]["name"] %>
+
+</a>
+    		<br>
+		<% } %>
+
+		<form action="/map">
+    		<button>ISS_LOCATION</button>
+		</form>
+
+    </body>
+</html>

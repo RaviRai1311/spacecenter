@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>
+            ISS_LOCATION
+        </title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+
+        <style>
+            #map{position: absolute; top: 10%; bottom: 10%; left: 30%; right: 5%;}
+        </style>
+    </head>
+    <body>
+
+		<h1>MAP
+		<li>Latitude: <%= ddata["iss_position"]["latitude"] %></li>
+		<li>Longitude: <%= ddata["iss_position"]["longitude"] %></li></h1>
+		<br>
+		<form action="/details">
+		    <button>MEMBER_DETAILS</button>
+		</form>
+
+		<div id = "map"></div>
+		<script>
+		    var map = L.map('map').setView([0,0],2); 
+    		L.tileLayer('https://maps.tilehosting.com/styles/streets/{z}/{x}/{y}.png?key=IzkUrAb0DQL4Gp0Ne6r3' ,{ 
+    	    attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a><a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>'
+    		}).addTo(map); 
+    		var marker = L.marker([<%= ddata["iss_position"]["latitude"] %>,<%= ddata["iss_position"]["longitude"] %>]).addTo(map);
+		</script>
+
+    </body>
+</html>
